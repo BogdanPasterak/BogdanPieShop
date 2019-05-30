@@ -22,6 +22,25 @@ namespace BogdanPieShop.Controllers
             return View(_pieRepository.GetAllPise().OrderBy(p => p.Name));
         }
 
+        public IActionResult Details(int id)
+        {
+            Debug.WriteLine("Id = " + id.ToString());
+            IEnumerator<Pie> enumerator = _pieRepository.GetAllPise().GetEnumerator();
+            enumerator.MoveNext();
+            Pie pie;
+
+            do
+            {
+                pie = enumerator.Current;
+                //Debug.WriteLine("In loop pie.Id = " + pie.Id);
+                if (pie.Id == id)
+                {
+                    return View(pie);
+                }
+            } while (enumerator.MoveNext()) ;
+            return View(_pieRepository.GetAllPise().FirstOrDefault<Pie>());
+        }
+
         public IActionResult Privacy()
         {
             return View();

@@ -10,7 +10,9 @@
         @foreach (var pie in Model)
         {
             <div class="col-lg-4 col-sm-6">
+                <a asp-action="Details" asp-route-id="@pie.Id" >
                 <img src="@pie.ImageThumbnailUrl" alt="Pie" class="img-thumbnail" />
+                </a>
                 <div class="row">
                     <h3 class="col-8">@pie.Name</h3>
                     <h3 class="col-4">@pie.Price.ToString("c")</h3>
