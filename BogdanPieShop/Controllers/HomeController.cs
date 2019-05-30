@@ -19,8 +19,7 @@ namespace BogdanPieShop.Controllers
 
         public IActionResult Index()
         {
-
-            return View();
+            return View(_pieRepository.GetAllPise().OrderBy(p => p.Name));
         }
 
         public IActionResult Privacy()

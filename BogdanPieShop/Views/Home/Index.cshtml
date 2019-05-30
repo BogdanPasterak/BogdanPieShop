@@ -1,8 +1,26 @@
-﻿@{
+﻿@model IEnumerable<Pie>
+@{
     ViewData["Title"] = "Home Page";
 }
 
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to My Shop</h1>
+    <div class="row">
+        @foreach (var pie in Model)
+        {
+            <div class="col-lg-4 col-sm-6">
+                <img src="@pie.ImageThumbnailUrl" alt="Pie" class="img-thumbnail" />
+                <div class="row">
+                    <h3 class="col-8">@pie.Name</h3>
+                    <h3 class="col-4">@pie.Price.ToString("c")</h3>
+                </div>
+                <div class="row">
+                    <p class="my-desc col-12 d-none border bg-light">@pie.LongDescription</p>
+                    <p class="col-8">@pie.ShortDescription</p>
+                    <button class="my-button col-4 btn btn-outline-primary" type="button">Show more</button>
+                </div>
+            </div>
+        }
+    </div>
 </div>
