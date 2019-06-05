@@ -14,7 +14,9 @@
                 <img src="@pie.ImageThumbnailUrl" alt="Pie" class="img-thumbnail" />
                 </a>
                 <div class="row">
-                    <h3 class="col-8">@pie.Name</h3>
+                    <a asp-controller="Home" asp-action="ViewDetails" asp-route-id="@pie.Id" class="col-8">
+                        <h3>@pie.Name</h3>
+                    </a>
                     <h3 class="col-4">@pie.Price.ToString("c")</h3>
                 </div>
                 <div class="row">

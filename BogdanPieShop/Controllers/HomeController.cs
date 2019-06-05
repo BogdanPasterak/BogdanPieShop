@@ -34,7 +34,12 @@ namespace BogdanPieShop.Controllers
 
         public IActionResult Details(int id)
         {
-            return View(_pieRepository.GetPieById(id));
+            var pie = _pieRepository.GetPieById(id);
+            if (pie == null)
+            {
+                return NotFound();
+            }
+            return View(pie);
         }
 
         public IActionResult Privacy()
