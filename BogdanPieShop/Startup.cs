@@ -34,6 +34,7 @@ namespace BogdanPieShop
             });
 
             services.AddTransient<IPieRepository, DbPieService>();
+            services.AddTransient<IFeedbackRepository, FeedbackService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
