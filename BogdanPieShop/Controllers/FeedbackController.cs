@@ -29,14 +29,18 @@ namespace BogdanPieShop.Controllers
             if (ModelState.IsValid)
             {
                 _feedbackRepository.AddFeedback(feedback);
-                return RedirectToAction("FeedbackComplete");
+                return RedirectToAction("FeedbackComplete", feedback);
             }
             return View(feedback);
         }
 
-        public IActionResult FeedbackComplete()
+        public IActionResult FeedbackComplete(Feedback feedback)
         {
-            return View();
+            if (feedback != null && ModelState.IsValid)
+            {
+                return View(feedback);
+            }
+            return RedirectToAction("Index");
         }
 
     }
